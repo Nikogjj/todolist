@@ -1,0 +1,3 @@
+#define PORT_SERVER 4004
+#define TAILLE_MAX_TACHE 1000
+#define TAILLE_NOM 30
