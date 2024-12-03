@@ -12,6 +12,13 @@
 
 #include "global.h"
 
+    struct task_t{
+        int ID;
+        char date_heure[50];
+        char text[255];
+        int fait_ou_pas;
+    };
+
 int main(){
     struct sockaddr_in server_addr={
         .sin_addr.s_addr=INADDR_ANY,
@@ -33,8 +40,27 @@ int main(){
     int client_fd=accept(server_fd,(struct sockaddr*)&client_addr,&len);perror("accept");
     if(client_fd==-1)return EXIT_FAILURE;
 
+
     char choix[5];memset(choix,0,5);
     recv(client_fd,choix,sizeof choix,0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if (strcmp(choix,"1")==0)
     {
