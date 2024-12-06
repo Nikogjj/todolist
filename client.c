@@ -95,14 +95,18 @@ int main(int argc, char** argv){
         char tache[TAILLE_MAX_TACHE-50];memset(tache,0,sizeof tache);
         printf("Entrez une tache à effectuer\n");
         fgets(tache,sizeof tache,stdin);
-        // tache[strlen(tache)-1]=0;
+        tache[strlen(tache)-1]=' ';
+        tache[strlen(tache)]=' ';
+
 
         char date_et_heure[TAILLE_MAX_TACHE];memset(date_et_heure,0,50);
         sprintf(date_et_heure,"[%s] : ",s_now);
         strcat(date_et_heure,tache);
+        strcat(date_et_heure,"          \n");
 
         // envoi du nom
         check_error = send(client_fd,nom,TAILLE_NOM,0);perror("send");
+
         //envoi de la tache a effectuer avec l'heure et la date de l'envoi
         check_error = send(client_fd,date_et_heure,TAILLE_MAX_TACHE,0);perror("send");
         if(check_error==-1)return EXIT_FAILURE;

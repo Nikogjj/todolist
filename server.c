@@ -62,6 +62,7 @@ int main(){
         char nom[TAILLE_NOM];
         recv(client_fd,nom,TAILLE_NOM,0);
         FILE * fd;
+
         if ((fd = fopen(nom,"r"))== NULL)
         {
             fd = fopen(nom,"a+");
@@ -105,12 +106,10 @@ int main(){
         {
             fgets(ligne,255,fd);
         }
-        fseek(fd,-1,SEEK_CUR);
-        // printf("la ligne : %s",ligne);
-        char* fait=" ✅\n";
-        // ligne[strlen(ligne)-1]=0;
-        // strcat(ligne,fait);
-        // printf("%s",ligne);
+        fseek(fd,-10,SEEK_CUR);
+
+        char* fait=" ✅";
+
         fwrite(fait,1,strlen(fait),fd);
 
         fclose(fd);
